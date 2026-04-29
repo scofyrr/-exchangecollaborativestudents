@@ -9,38 +9,188 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as RankingRouteImport } from './routes/ranking'
+import { Route as NewRouteImport } from './routes/new'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as FeedRouteImport } from './routes/feed'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProfileDniRouteImport } from './routes/profile.$dni'
+import { Route as PostIdRouteImport } from './routes/post.$id'
 
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RankingRoute = RankingRouteImport.update({
+  id: '/ranking',
+  path: '/ranking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewRoute = NewRouteImport.update({
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedRoute = FeedRouteImport.update({
+  id: '/feed',
+  path: '/feed',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileDniRoute = ProfileDniRouteImport.update({
+  id: '/profile/$dni',
+  path: '/profile/$dni',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PostIdRoute = PostIdRouteImport.update({
+  id: '/post/$id',
+  path: '/post/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/feed': typeof FeedRoute
+  '/login': typeof LoginRoute
+  '/new': typeof NewRoute
+  '/ranking': typeof RankingRoute
+  '/register': typeof RegisterRoute
+  '/post/$id': typeof PostIdRoute
+  '/profile/$dni': typeof ProfileDniRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/feed': typeof FeedRoute
+  '/login': typeof LoginRoute
+  '/new': typeof NewRoute
+  '/ranking': typeof RankingRoute
+  '/register': typeof RegisterRoute
+  '/post/$id': typeof PostIdRoute
+  '/profile/$dni': typeof ProfileDniRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/feed': typeof FeedRoute
+  '/login': typeof LoginRoute
+  '/new': typeof NewRoute
+  '/ranking': typeof RankingRoute
+  '/register': typeof RegisterRoute
+  '/post/$id': typeof PostIdRoute
+  '/profile/$dni': typeof ProfileDniRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/feed'
+    | '/login'
+    | '/new'
+    | '/ranking'
+    | '/register'
+    | '/post/$id'
+    | '/profile/$dni'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/admin'
+    | '/feed'
+    | '/login'
+    | '/new'
+    | '/ranking'
+    | '/register'
+    | '/post/$id'
+    | '/profile/$dni'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/feed'
+    | '/login'
+    | '/new'
+    | '/ranking'
+    | '/register'
+    | '/post/$id'
+    | '/profile/$dni'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  FeedRoute: typeof FeedRoute
+  LoginRoute: typeof LoginRoute
+  NewRoute: typeof NewRoute
+  RankingRoute: typeof RankingRoute
+  RegisterRoute: typeof RegisterRoute
+  PostIdRoute: typeof PostIdRoute
+  ProfileDniRoute: typeof ProfileDniRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ranking': {
+      id: '/ranking'
+      path: '/ranking'
+      fullPath: '/ranking'
+      preLoaderRoute: typeof RankingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/new': {
+      id: '/new'
+      path: '/new'
+      fullPath: '/new'
+      preLoaderRoute: typeof NewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feed': {
+      id: '/feed'
+      path: '/feed'
+      fullPath: '/feed'
+      preLoaderRoute: typeof FeedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +198,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile/$dni': {
+      id: '/profile/$dni'
+      path: '/profile/$dni'
+      fullPath: '/profile/$dni'
+      preLoaderRoute: typeof ProfileDniRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/post/$id': {
+      id: '/post/$id'
+      path: '/post/$id'
+      fullPath: '/post/$id'
+      preLoaderRoute: typeof PostIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  FeedRoute: FeedRoute,
+  LoginRoute: LoginRoute,
+  NewRoute: NewRoute,
+  RankingRoute: RankingRoute,
+  RegisterRoute: RegisterRoute,
+  PostIdRoute: PostIdRoute,
+  ProfileDniRoute: ProfileDniRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
