@@ -47,7 +47,7 @@ function PostDetail() {
     const { data: p } = await supabase
       .from("posts")
       .select(`id, title, content, cover_image_url, created_at, author_id,
-        author:profiles!posts_author_id_fkey(dni, full_name, level, grade),
+        author:profiles!posts_author_profile_fkey(dni, full_name, level, grade),
         category:categories(name, emoji)`)
       .eq("id", id)
       .maybeSingle();
@@ -55,7 +55,7 @@ function PostDetail() {
 
     const [{ data: cs }, { count }, { data: liked }] = await Promise.all([
       supabase.from("comments").select(`id, content, created_at, author_id,
-        author:profiles!comments_author_id_fkey(dni, full_name, level)`)
+        author:profiles!comments_author_profile_fkey(dni, full_name, level)`)
         .eq("post_id", id).order("created_at", { ascending: true }),
       supabase.from("likes").select("*", { count: "exact", head: true }).eq("post_id", id),
       user

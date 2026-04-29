@@ -29,7 +29,7 @@ function FeedPage() {
     let q = supabase
       .from("posts")
       .select(`id, title, content, cover_image_url, created_at,
-        author:profiles!posts_author_id_fkey(dni, full_name, level),
+        author:profiles!posts_author_profile_fkey(dni, full_name, level),
         category:categories(name, emoji, slug),
         likes(count), comments(count)`)
       .order("created_at", { ascending: false })
